@@ -25,10 +25,12 @@ class Compilation(models.Model):
 class Product(models.Model):
     char_name = models.CharField(verbose_name="Название телефона", max_length=127)
     compilations = models.ManyToManyField(Compilation, verbose_name="Участие в подборках")
-    price = models.CharField(verbose_name="Цена", max_length=127)
-
+    price_1 = models.CharField(verbose_name="Цена 1", max_length=127)
+    price_2 = models.CharField(verbose_name="Цена 1", max_length=127)
+    price_3 = models.CharField(verbose_name="Цена 1", max_length=127)
+    price_4 = models.CharField(verbose_name="Цена 1", max_length=127)
+    price_5 = models.CharField(verbose_name="Цена 1", max_length=127)
 
     def __str__(self):
         return self.char_name
-    
     
