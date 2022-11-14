@@ -1,12 +1,5 @@
 from django.contrib import admin
-from .models import Cpu, Rom, Manufacter, Compilation, Product, Book, Review
+from .models import Cpu, Manufacter, Compilation, Product
 
-admin.site.register([Cpu, Rom, Manufacter, Compilation, Product, Book, Review])
+admin.site.register([Cpu, Manufacter, Compilation, Product])
 
-class ReviewInline(admin.StackedInline):
-    model = Review
-
-class BookAdmin(admin.ModelAdmin):
-    inlines = [
-        ReviewInline,
-    ]
