@@ -15,17 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from main.views import CpuApiView, ProductsApiView
+from main.views import ProductsApiView, CompilationsApiView, GetProductsApiView
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.routers import DefaultRouter 
+
+router = DefaultRouter()
+router.register('api/products', ProductsApiView)
+router.register('api/comps', CompilationsApiView)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/cpulist', CpuApiView.as_view()),
-    path('api/products', ProductsApiView.as_view())
-
+    path('api/getproducts/<int:pk>/', GetProductsApiView.as_view()),
+    # path('api/products/', ProductsApiView.as_view()),
+    path('admin/', admin.site.urls),        
+    # path('api/comps', CompilationsApiView.as_view()),
+    # path('api/getproducts', GetProductsApiView.as_view())
 ]
 
+urlpatterns += router.urls
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
