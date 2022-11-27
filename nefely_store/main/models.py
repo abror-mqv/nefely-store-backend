@@ -1,6 +1,7 @@
 from django.db import models
 from colorfield.fields import ColorField
 from mptt.models import MPTTModel, TreeForeignKey
+import uuid
 
 
 class Cpu(models.Model):
@@ -18,6 +19,7 @@ class Manufacter(models.Model):
 
 
 class Product(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     char_name = models.CharField(
         verbose_name="Название телефона", max_length=127)
     # cpu = models.TreeForeignKey(Cpu, on_delete=models.PROTECT, default=None)
